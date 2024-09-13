@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>제닉스 Pre-IPO Account</title>
+  <link rel="stylesheet" href="styles.css"> <!-- 스타일 시트 링크 -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700&display=swap">
+</head>
+<body>
+
+  <!-- 이미지 1 -->
+  <div class="image1">
+    <img src="https://i.ibb.co/pQ8KsQM/image.png" alt="이미지 1">
+  </div>
+
+  <!-- 이미지 2 -->
+  <div class="image2">
+    <img src="https://i.ibb.co/hcTpd7J/image.png" alt="이미지 2">
+  </div>
+
+  <!-- 버튼 1: myaccount.html로 이동 -->
+  <a href="#" class="button button1" id="button1">
+    <img src="https://i.ibb.co/X2zXYvT/image.png" alt="버튼 1">
+  </a>
+
+  <!-- 버튼 2: 하이퍼링크로 새탭 열림 -->
+  <a href="#" class="button button2" id="button2">
+    <img src="https://i.ibb.co/7C8RYRv/image.png" alt="버튼 2">
+  </a>
+
+  <!-- 로딩 화면 -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p><b>주주 정보</b>를<br>확인하고 있습니다.</p>
+  </div>
+
+  <div class="loading" id="loading2">
+    <div class="spinner"></div>
+    <p><b>가이드북</b>을<br>불러오고 있습니다.</p>
+  </div>
+
+  <script>
+    document.getElementById('button1').addEventListener('click', function(event) {
+      event.preventDefault(); // 기본 클릭 동작 방지
+      document.getElementById('loading').style.display = 'flex'; // 로딩 화면 표시
+      setTimeout(function() {
+        window.location.href = 'myaccount.html'; // 2초 후 페이지 이동
+      }, 2000);
+    });
+
+    document.getElementById('button2').addEventListener('click', function(event) {
+      event.preventDefault(); // 기본 클릭 동작 방지
+      document.getElementById('loading2').style.display = 'flex'; // 로딩 화면 표시
+      setTimeout(function() {
+        document.getElementById('loading2').style.display = 'none'; // 로딩 화면 숨김
+        window.open('https://online.fliphtml5.com/fhciz/bmpi/', '_blank'); // 새 탭 열기
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>

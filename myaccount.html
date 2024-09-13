@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My Account</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="myaccount.css">
+</head>
+<body>
+  <!-- 전체 컨테이너 -->
+  <div class="container">
+    <!-- 큰 흰 틀 -->
+    <div class="content-box">
+      <!-- 헤더 부분 -->
+      <div class="header">
+        <!-- 아이콘 부분 -->
+        <div class="icon">
+          <img src="https://i.ibb.co/Z1gYG1d/image.png" alt="아이콘">
+        </div>
+        <h1></h1> <!-- JavaScript로 채워질 부분 -->
+        <p>현재 정상 신고되어 있는 보유현황을 안내드립니다.</p>
+      </div>
+
+      <!-- 표 1 -->
+      <div class="table table1">
+        <table>
+          <tr>
+            <th class="bold-text">주주명</th>
+            <td class="name"></td> <!-- JavaScript로 채워질 부분 -->
+          </tr>
+          <tr>
+            <th class="bold-text">증권계좌</th>
+            <td class="account-number"></td> <!-- JavaScript로 채워질 부분 -->
+          </tr>
+        </table>
+      </div>
+
+      <!-- 표 2 -->
+      <div class="table table2">
+        <table>
+          <tr>
+            <th class="bold-text">보유주수</th>
+            <td class="shares"></td> <!-- JavaScript로 채워질 부분 -->
+          </tr>
+          <tr>
+            <th class="bold-text">1주당 가격</th>
+            <td class="price-per-share"></td> <!-- JavaScript로 채워질 부분 -->
+          </tr>
+          <tr>
+            <th class="bold-text">평가금액</th>
+            <td class="total-value"></td> <!-- JavaScript로 채워질 부분 -->
+          </tr>
+        </table>
+      </div>
+
+      <!-- 이미지 1 -->
+      <div class="image image1">
+        <img src="https://i.ibb.co/5jjMhmz/2.png" alt="이미지 1">
+      </div>
+
+<!-- 뉴스 링크 부분 -->
+<div class="news-container">
+  <div class="table news-table">
+    <table>
+      <tr>
+        <td><a href="tel:담당자연락처" target="_blank" class="highlight-link"> 📱&nbsp&nbsp담당자 연결</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.newsway.co.kr/news/view?ud=2024090514061978074" target="_blank">• 배성관 제닉스 대표이사 "2030년 매출 3000억 달성 가능한 목표"</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/A8AY38MB6J4P6R3BSFR4DVTD75C3GDEQ202491111632.pdf" target="_blank">• [IPO] 제닉스 IR BOOK</a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+      <!-- 저작권 정보 -->
+      <div class="footer">
+        <p>Copyright ZENIXKOREA, All rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript 파일 추가 -->
+  <script>
+    // JSON 파일에서 데이터 불러오기
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        // HTML 요소에 데이터 삽입
+        document.querySelector('.header h1').innerText = `${data.name}님 안녕하세요.`;
+        document.querySelector('.name').innerText = data.name;
+        document.querySelector('.account-number').innerText = data.accountNumber;
+        document.querySelector('.shares').innerText = `${data.shares}주`;
+        document.querySelector('.price-per-share').innerText = `${data.pricePerShare.toLocaleString()}원`;
+  
+        // 평가금액 계산
+        const totalValue = data.shares * data.pricePerShare;
+        document.querySelector('.total-value').innerText = `${totalValue.toLocaleString()}원`;
+  
+        // 전화번호 링크 업데이트
+        const phoneLink = document.querySelector('.news-table a[href^="tel:"]');
+        phoneLink.setAttribute('href', `tel:${data.담당자연락처}`);
+      })
+      .catch(error => {
+        console.error('Error loading the data:', error);
+        // 오류 발생 시 사용자에게 메시지 표시
+        document.querySelector('.header h1').innerText = '데이터를 불러오는 데 실패했습니다.';
+      });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: 'Pretendard', sans-serif;
+    letter-spacing: -0.5px; /* 자간을 살짝 줄임 */
+    font-stretch: condensed; /* 글자 폭을 살짝 줄임 */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    background: url('https://i.ibb.co/S5s9Fv8/image.png') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0; /* 초기 상태에서 숨김 */
+    animation: fadeIn 1.5s ease-in forwards; /* 오프닝 애니메이션 */
+}
+
+/* 이미지 크기 및 중앙 정렬 */
+.image1 img, .image2 img {
+    width: auto; /* 본연의 크기를 유지 */
+    height: auto;
+    max-width: 50%; /* 화면 크기에 맞게 조정, 더 작은 비율 */
+    margin-bottom: 10px; /* 여백 감소 */
+}
+
+/* 반응형 버튼 */
+.button {
+    display: block;
+    width: auto; /* 본연의 크기를 유지 */
+    height: auto;
+    margin: 8px auto; /* 여백 감소 */
+}
+
+.button1 img {
+    width: 180px; /* 버튼 크기 더 작게 조정 */
+    height: 50px;
+}
+
+.button2 img {
+    width: 130px; /* 버튼 크기 더 작게 조정 */
+    height: 35px;
+}
+
+/* 애니메이션 */
+@keyframes scaleUpDown {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.button1 {
+    animation: scaleUpDown 2.7s infinite; /* 버튼1은 계속 강조 */
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.button2 {
+    animation: fadeIn 1s ease-in-out; /* 버튼2는 인트로 애니메이션 후 정적 */
+}
+
+/* 페이지 오프닝 애니메이션 */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* 로딩 화면 스타일 */
+.loading {
+    display: none; /* 초기 상태에서 숨김 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 정가운데 정렬 */
+    width: 180px; /* 고정된 너비 */
+    height: 150px; /* 고정된 높이 */
+    background: rgba(255, 255, 255, 0.9); /* 배경색과 투명도 */
+    color: #333;
+    text-align: center;
+    padding: 20px; /* 패딩 추가 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 스피너 스타일 */
+.spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1); /* 연한 그레이 */
+    border-left: 8px solid #3498db; /* 블루 색상 */
+    border-radius: 50%;
+    width: 50px; /* 스피너 크기 */
+    height: 50px;
+    animation: spin 1s linear infinite; /* 회전 애니메이션 */
+    margin: 0 auto 10px; /* 가운데 정렬 */
+}
+
+/* 스피너 애니메이션 */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading p {
+    font-size: 16px; /* 더 작은 텍스트 */
+    margin: 0; /* 여백 제거 */
+    line-height: 1.4; /* 줄 간격 조정 */
+}
+
+/* 미디어 쿼리: 작은 화면에 맞춘 추가 조정 */
+@media (max-width: 600px) {
+    .image1 img, .image2 img {
+        max-width: 70%; /* 작은 화면에서는 비율 조정 */
+    }
+
+    .button {
+        max-width: 70%; /* 버튼도 비율 조정 */
+    }
+}
